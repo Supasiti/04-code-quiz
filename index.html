@@ -11,13 +11,22 @@
 </head>
 
 <body>
-  <header class=pageHeader>
-    <div class="pageContainer">
-      p
-    </div>
 
+  <!-- Header -->
+  <header>
+    <div class="pageContainer flexRow flexSpaceBetween">
+      <div class="pageHeader">
+        <nav>
+          <h3 class="navItem">High Scores</h3>
+        </nav>
+        <div class="timer-container">
+
+        </div>
+      </div>
+    </div>
   </header>
 
+  <!-- Main -->
   <main>
     <div class="pageContainer">
       <div class="contentContainer">
@@ -27,7 +36,7 @@
             <!-- title -->
             <div class="quizTitleContainer flexRow flexSpaceBetween">
               <h2 class="quizTitle">Question </h2> 
-              <div class="quizNumberContainer flexColumn flexCenter">
+              <div class="circleContainer flexColumn flexCenter">
                 <h2 class="quizNumber">10</h2>
               </div>
             </div>
@@ -40,9 +49,35 @@
             <!-- content -->
             <div class="quizContent">
               <ul flex-column>
-                <li data-choice= "a" class="choiceContainer flexColumn flexCenter">
-                  <div class="quizNumberContainer">
+
+                <!-- choice a -->
+                <li data-choice= "a" class="choiceContainer flexRow">
+                  <div class="circleContainer flexColumn flexCenter">
                     <p class="choiceNumber">a</p>
+                  </div>
+                  <p>&ltjs&gt</p>
+                </li>
+                
+                <!-- choice b -->
+                <li data-choice= "b" class="choiceContainer flexRow">
+                  <div class="circleContainer flexColumn flexCenter">
+                    <p class="choiceNumber">b</p>
+                  </div>
+                  <p>&ltjs&gt</p>
+                </li>
+
+                <!-- choice a -->
+                <li data-choice= "c" class="choiceContainer flexRow">
+                  <div class="circleContainer flexColumn flexCenter">
+                    <p class="choiceNumber">c</p>
+                  </div>
+                  <p>&ltjs&gt</p>
+                </li>
+
+                <!-- choice a -->
+                <li data-choice= "d" class="choiceContainer flexRow">
+                  <div class="circleContainer flexColumn flexCenter">
+                    <p class="choiceNumber">d</p>
                   </div>
                   <p>&ltjs&gt</p>
                 </li>

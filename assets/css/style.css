@@ -66,7 +66,7 @@ h3 {
 
 p, code  {
   color: var(--light-green);
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.4;
 }
 
@@ -77,7 +77,7 @@ a {
   cursor: pointer;
 }
 
-
+/* -------------------------------- */
 /* containers */
 
 .pageContainer {
@@ -86,7 +86,7 @@ a {
   /* background-color: yellow  ; */
 }
 .contentContainer {
-  padding-top: 1rem;
+  padding-top: 2rem;
   padding-bottom: 1rem;
 }
 
@@ -101,6 +101,7 @@ a {
   transition: all 0.5s ease-in-out;
 }
 
+/* -------------------------------- */
 /*  flex boxes */
 
 .flexColumn {
@@ -120,8 +121,9 @@ a {
 .flexCenter {
   justify-content: center;
 }
-
+/* -------------------------------- */
 /* quiz-box */
+
 .quizTitleContainer {
   border-radius: 1.8rem;
   padding: 0.2rem; 
@@ -132,7 +134,7 @@ a {
   margin: 0.8rem 0.6rem 0.4rem 0.6rem;
 }
 
-.quizNumberContainer {
+.circleContainer {
   border-radius: 1.6rem;
   min-width: 3rem;
   height: 3rem;
@@ -145,6 +147,7 @@ a {
 
 .quizSubtitle {
   padding: 0.8rem;
+  margin: 2rem 0rem;
 }
 
 .quizContent {
@@ -153,25 +156,27 @@ a {
 
 .choiceContainer {
   background-color: var(--light-grey);
+  border: 1px solid var(--light-grey);
   min-height: 3rem;
-  border-radius: 1.6rem;
+  border-radius: 1.8rem;
   padding: 0.2rem;
+  align-items: center;
+  margin: 0.6rem 0rem;
+  transition: all 0.2s ease-in-out;
 }
 
-.choiceContainer > *:first-child   {
+.choiceContainer:hover {
+  border: 1px solid var(--teal);
+  box-shadow: 0px 0px 4px 4px var(--light-grey);
+  transform: translate(-1px,-1px);
+}
+
+.choiceContainer > p   {
   margin-left: 0.6rem;
 }
 
-.choiceContainer > *[data-choice]:before {
-  content: attr(data-choice);
-  display: inline-block;
-  width: 2.8rem;
-  height: 2.8rem;
-  background-color: var(--light-green);
-  border-radius: 1.5rem;
+.choiceNumber{
   color: var(--ny-pink);
+  margin: 0rem auto;
 }
 
-.choiceNumberContainer{
-
-}
