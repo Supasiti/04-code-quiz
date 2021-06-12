@@ -85,8 +85,8 @@ a {
   margin: 0rem auto;
 }
 .contentContainer {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
 }
 
 .quizContainer {
@@ -128,18 +128,13 @@ a {
 /* header */
 
 .pageHeader {
-  /* padding: 0.6rem 0rem; */
   align-items: center;
-  /* background-color: var(--light-grey); */
 }
 
 nav .navItem {
   padding: 1rem 0rem;
 }
 
-/* .pageHeader nav:hover {
-  cursor: pointer;
-} */
 
 .timerContainer {
   align-items: center;
@@ -212,8 +207,11 @@ nav .navItem {
   margin-left: 0.6rem;
 }
 
-.choiceNumber{
+.choiceNumber {
   color: var(--ny-pink);
   margin: 0rem auto;
 }
 
+.displayNone {
+  display: none;
+}
