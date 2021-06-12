@@ -13,14 +13,17 @@
 <body>
 
   <!-- Header -->
-  <header>
-    <div class="pageContainer flexRow flexSpaceBetween">
-      <div class="pageHeader">
+  <header class=>
+    <div class="pageContainer">
+      <div class="pageHeader flexRow flexSpaceBetween">
         <nav>
-          <h3 class="navItem">High Scores</h3>
+          <!-- nav to high scores page -->
+          <a href="./highscores.html"> <h3 class="navItem">High Scores</h3></a>
         </nav>
-        <div class="timer-container">
-
+        <!-- timer -->
+        <div class="timerContainer flexRow flexEnd">
+          <i class="fa fa-clock-o" aria-hidden="true"></i>
+          <div class="circleContainer flexColumn flexCenter"> <h3 class="timerCount">75</h3></div>
         </div>
       </div>
     </div>
@@ -48,7 +51,7 @@
 
             <!-- content -->
             <div class="quizContent">
-              <ul flex-column>
+              <ul>
 
                 <!-- choice a -->
                 <li data-choice= "a" class="choiceContainer flexRow">

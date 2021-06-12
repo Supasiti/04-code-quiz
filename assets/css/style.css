@@ -83,16 +83,14 @@ a {
 .pageContainer {
   max-width: 480px;
   margin: 0rem auto;
-  /* background-color: yellow  ; */
 }
 .contentContainer {
-  padding-top: 2rem;
+  padding-top: 1rem;
   padding-bottom: 1rem;
 }
 
 .quizContainer {
   width: 100%;
-  min-height: 20rem;
   background-color: var(--dark-grey);
   border-radius: 2.4rem;
   border: 1px solid var(--teal);
@@ -121,6 +119,44 @@ a {
 .flexCenter {
   justify-content: center;
 }
+
+.flexEnd {
+  justify-content: flex-end;
+}
+
+/* -------------------------------- */
+/* header */
+
+.pageHeader {
+  /* padding: 0.6rem 0rem; */
+  align-items: center;
+  /* background-color: var(--light-grey); */
+}
+
+nav .navItem {
+  padding: 1rem 0rem;
+}
+
+/* .pageHeader nav:hover {
+  cursor: pointer;
+} */
+
+.timerContainer {
+  align-items: center;
+}
+
+.timerContainer .fa-clock-o {
+  color: var(--teal);
+  font-size: 2rem;
+  margin-right: 1rem; 
+}
+
+.timerCount {
+  color: var(--ny-pink);
+  margin: 0rem auto; 
+}
+
+
 /* -------------------------------- */
 /* quiz-box */
 
@@ -139,6 +175,7 @@ a {
   min-width: 3rem;
   height: 3rem;
   background-color: var(--light-green);
+  color: var(--ny-pink);
 }
 
 .quizNumber {
