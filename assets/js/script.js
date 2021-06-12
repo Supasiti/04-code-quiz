@@ -2,6 +2,9 @@ let quizTitle = document.querySelector(".quizTitle");
 let quizSubtitle = document.querySelector(".quizSubtitle");
 let quizContentDiv = document.querySelector(".quizContent");
 let quizTitleContainer = document.querySelector(".quizTitleContainer");
+let startButton = document.querySelector("#startButton");
+
+console.log(startButton);
 
 //   need work out how to load data from somewhere  in the future
 let questions = [
@@ -57,7 +60,7 @@ let questions = [
   }
 ];
 let currentQuestion = 0;
-
+let quizTimerId;
 
 function clearInnerHtml(el) {
   el.innerHTML = "";
@@ -69,10 +72,10 @@ function clearInnerHtml(el) {
 
 // render the question for the first time
 //  - subsequentially rendering can use renderQuestion instead
-function renderFirstQuestion (question) {  
-  quizSubtitle.textContent = question.question; 
+function renderFirstQuestion () {  
+  quizSubtitle.textContent = questions[currentQuestion].question; 
   renderFirstQuizNumber();
-  renderFirstChoiceSet(question);
+  renderFirstChoiceSet();
 };
 
 // render the quiz number for the first time
@@ -84,8 +87,8 @@ function renderFirstQuizNumber() {
 };
 
 // render the screen to create all li elements for choices for the first time
-function renderFirstChoiceSet(question) {
-  let choices = question.choices;
+function renderFirstChoiceSet() {
+  let choices = questions[currentQuestion].choices;
   let ulContainer = document.createElement("ul");
   clearInnerHtml(quizContentDiv);
   quizContentDiv.appendChild(ulContainer);
@@ -112,6 +115,7 @@ function createQuizChoiceLi(choice, text) {
 
 function getNextQuestion() {
   currentQuestion++;
+  determineCorrect();
   if (currentQuestion == questions.length){
     stopTimer();
     showFinalScore();
@@ -127,6 +131,7 @@ function renderNextQuestion(index) {
   renderNextChoiceSet(index);
 };
 
+// render the next set of choices
 function renderNextChoiceSet(index) {
   let choiceEls = quizContentDiv.querySelectorAll(".choiceText");
   for (let el of choiceEls) {
@@ -138,6 +143,8 @@ function renderNextChoiceSet(index) {
 
 
 
-
-
-renderFirstQuestion(questions[currentQuestion]);
+startButton.addEventListener("click", function(e) {
+  e.preventDefault();
+  console.log("button clicked");
+  renderFirstQuestion();
+});

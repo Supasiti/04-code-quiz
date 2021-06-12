@@ -212,6 +212,11 @@ nav .navItem {
   margin: 0rem auto;
 }
 
-.displayNone {
-  display: none;
+.fullWidth {
+  width: 100%;
+}
+
+/* start button  */
+.startButtonText {
+  text-align: center;
 }
