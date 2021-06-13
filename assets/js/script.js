@@ -1,8 +1,9 @@
-let quizTitle = document.querySelector(".quizTitle");
-let quizSubtitle = document.querySelector(".quizSubtitle");
-let quizContentDiv = document.querySelector(".quizContent");
-let quizTitleContainer = document.querySelector(".quizTitleContainer");
 let quizContainerDiv = document.querySelector(".quizContainer");
+let quizTitle = document.querySelector(".quizTitle");
+let quizTitleContainer = document.querySelector(".quizTitleContainer");
+let quizSubtitle = document.querySelector(".quizSubtitle");
+let quizSubtitleContainer = document.querySelector(".quizSubtitleContainer");
+let quizContentDiv = document.querySelector(".quizContent");
 let timerEl = document.querySelector(".timerCount");
 let startButton = document.querySelector("#startButton");
 
@@ -138,6 +139,7 @@ function clearInnerHtml(el) {
 //  - this will create all the html elements for the quiz.
 //  - subsequentially rendering choose use renderNextQuestion instead
 function renderFirstQuestion (callback) {  
+  quizTitle.textContent = "Question";
   quizSubtitle.textContent = questions[currentQuestion].question; 
   renderFirstQuizNumber();
   renderFirstChoiceSet(callback);
@@ -206,15 +208,13 @@ function onQuestionAnswered(e) {
 };
 
 // check if answer is correct
-  //  if it is ==> render the background green for 1 sec
-  //  if not ===> substract 10 seconds from timer, render the background red for 1 sec
 function checkAnswer(e){
   let userChoice = e.target.closest("[data-choice]").getAttribute("data-choice");
   if (isCorrectAnswer(userChoice)) {
-    renderBackground("correct");
+    renderBackground("correctAnswer");
   } else {
     penaliseUser();
-    renderBackground("wrong");
+    renderBackground("wrongAnswer");
   };
 
   function isCorrectAnswer(userChoice){
@@ -222,27 +222,27 @@ function checkAnswer(e){
   };
 
   function renderBackground(text) {
-    if (text === "correct" ){
-      quizContainerDiv.classList.add("correctAnswer");
-    } else if (text === "wrong") {
-      quizContainerDiv.classList.add("wrongAnswer");
+    let backgroundOptions = ["correctAnswer", "wrongAnswer"];
+    if (backgroundOptions.includes(text)){
+      quizContainerDiv.classList.add(text);
+      
+      // wait for a second before removing it 
+      setTimeout(function () { 
+        quizContainerDiv.classList.remove(text)
+      }, 800);
     };
-    // wait for a second before reset it back
-    setTimeout(function() {
-      quizContainerDiv.setAttribute("class", "quizContainer");
-    }, 800);
   };
 
   function penaliseUser(){
-    timeLeft = Math.max(timeLeft - 10, 0);
+    timeLeft = Math.max(timeLeft - 15, 0);
   };
 };
 
-// if it is the last one ==> stop timer, show the score
-// if not ==> next question
+// check if this is the last question 
 function checkIfLastQuestion() {
   if (currentQuestion == questions.length){
     stopTimer();
+    renderTimer();
     return 
   }
   renderNextQuestion();
@@ -251,7 +251,6 @@ function checkIfLastQuestion() {
 
 //----------------------------------------
 // Timer 
-
 
 function runTimer() {
   timeLeft = 75;
@@ -269,29 +268,94 @@ function updateTimer(){
   };
 };
 
+// stop timer
 function stopTimer() {
   if (quizTimerId) {
     clearInterval(quizTimerId);
     quizTimerId = null;
-    timeLeft = 75;
     showFinalScore();
   };
 };
 
-function showFinalScore() {
-  console.log("next page");
-};
-
+// render time on screen
 function renderTimer () {
   timerEl.textContent = timeLeft;
 };
 
+//----------------------------------------
+// Log Final Score form
 
+// render a new form to enter for high score
+function showFinalScore() {
+  quizContainerDiv.classList.add("textCenter"); 
+  renderTitle();
+  renderScore();
+  renderHighScoreForm(onSubmitClicked);
+  // update subtitle to your final score is 
+  // append child of score
+  // update content with a form 
 
+  // render the title
+  function renderTitle() {
+    let quizNumberDiv = quizTitleContainer.querySelector(".circleContainer");
+    quizTitleContainer.removeChild(quizNumberDiv);
+    quizTitle.textContent = "Well Done!";
+    quizTitle.style.width = "100%";
+  };
 
+  // render the final score
+  function renderScore() {
+    let finalScore = timeLeft;
+    let scoreEl = document.createElement("p");
+    scoreEl.classList.add("quizScore");
+    scoreEl.textContent = finalScore;
+    quizSubtitleContainer.appendChild(scoreEl);
+    quizSubtitle.textContent = "Your final score is";
+  };
 
-startButton.addEventListener("click", function(e) {
+  // render the form for user to click submit
+  function renderHighScoreForm(callback) {
+    let form = createHighScoreForm(callback);
+    clearInnerHtml(quizContentDiv);
+    quizContentDiv.appendChild(form);
+  };
+
+  // create form
+  function createHighScoreForm(callback) {
+    let form = document.createElement("form");
+    form.classList.add("flexColumn");
+    form.innerHTML = `
+      <label class="formLabel" for="userName">Please Enter Your Name</label>
+      <input class="choiceContainer textCenter" type="text" id="userName" name="userName" placeholder="Asama Doop">
+      <p class="warning hidden">A name must be non-empty.</p>
+      <input class="choiceContainer" id="submitButton" type="submit" value="Submit">
+    `
+    let submitButton = form.querySelector("#submitButton");
+    submitButton.addEventListener("click", callback);
+    return form;
+  };
+};
+
+// activate when a submit button is clicked
+function onSubmitClicked (e) {
   e.preventDefault();
-  renderFirstQuestion(onQuestionAnswered);
-  runTimer();
-});
+  console.log("submit");
+
+  // check if input is empty 
+  // 
+};
+
+
+//----------------------------------------
+// Initialise
+
+function init() {
+  startButton.addEventListener("click", function(e) {
+    e.preventDefault();
+    renderFirstQuestion(onQuestionAnswered);
+    runTimer();
+  });
+};
+
+
+init();

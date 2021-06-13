@@ -34,26 +34,54 @@
     <div class="pageContainer">
       <div class="contentContainer">
         <div class="quizContainer">
-          <article class="flexColumn ">
+          <article class="flexColumn">
             
             <!-- title -->
-            <div class="quizTitleContainer flexRow flexSpaceBetween">
+            <!-- <div class="quizTitleContainer flexRow flexSpaceBetween">
               <h2 class="quizTitle">Code Quiz Challenge </h2> 
+            </div> -->
+            
+            <!-- subtitle -->
+            <!-- <div class="quizSubtitleContainer flexColumn">
+              <h3 class="quizSubtitle">
+                Try to answer the following questions code-related questions within the time 
+                limit. 10 seconds will be deducted for every incorrect answer. Good Luck!
+              </h3>
+            </div> -->
+
+            <!-- content -->
+            <!-- <div class="quizContent">
+              <button id="startButton" class="choiceContainer fullWidth"> 
+                <p class="textCenter">Start</p>
+              </button>
+            </div> -->
+
+            <!-- title -->
+            <div class="quizTitleContainer flexRow flexSpaceBetween">
+              <h2 class="quizTitle">Well Done! </h2> 
             </div>
             
             <!-- subtitle -->
-            <h3 class="quizSubtitle">
-              Try to answer the following questions code-related questions within the time 
-              limit. 10 seconds will be deducted for every incorrect answer. Good Luck!
-            </h3>
+            <div class="quizSubtitleContainer flexColumn">
+              <h3 class="quizSubtitle">
+                Try to answer the following questions code-related questions within the time 
+                limit. 15 seconds will be deducted for every incorrect answer. Good Luck!
+              </h3>
+            </div>
+            
 
             <!-- content -->
             <div class="quizContent">
-              <button id="startButton" class="choiceContainer fullWidth"> 
-                <p class="startButtonText">Start</p>
-              </button>
+              <form class="flexColumn">
+                <label class="formLabel" for="userName">Please Enter Your Name</label>
+                <input class="choiceContainer" type="text" id="userName" name="userName" placeholder="Asama Doop">
+                <p class="warning visible">A name must be non-empty.</p>
+                <input class="choiceContainer" id="submitButton" type="submit" value="Submit">
+              </form>
+              <!-- <button id="startButton" class="choiceContainer fullWidth"> 
+                <p class="">Start</p>
+              </button> -->
             </div>
-
 
           </article>
         </div>

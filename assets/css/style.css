@@ -42,7 +42,7 @@ h1,
 h2,
 h3,
 h4,
-p, a, code{
+p, a, label, input {
   font-family: Josefin Sans,sans-serif;
   color: var(--light-green);
   letter-spacing: 1px;
@@ -64,7 +64,7 @@ h3 {
   font-size: 1.2rem;
 }
 
-p, code  {
+p, label, input  {
   color: var(--light-green);
   font-size: 1.2rem;
   line-height: 1.4;
@@ -75,6 +75,22 @@ a {
   font-size: 1rem;
   line-height: 1.4;
   cursor: pointer;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
 }
 
 /* -------------------------------- */
@@ -165,6 +181,7 @@ nav .navItem {
 /* -------------------------------- */
 /* quiz-box */
 
+/* title */
 .quizTitleContainer {
   border-radius: 1.8rem;
   padding: 0.2rem; 
@@ -187,11 +204,22 @@ nav .navItem {
   margin: 0.2rem auto -0.2rem auto;
 }
 
-.quizSubtitle {
+
+/* subtitle */
+.quizSubtitleContainer {
   padding: 0.8rem;
-  margin: 2rem 0rem;
+  margin: 1.6rem 0rem 0.6rem 0rem;
+  align-items: center;
 }
 
+.quizScore {
+  font-size: 4rem;
+  color: var(--ny-pink);
+  line-height: 1;
+  margin-top: 2rem;
+}
+
+/* content */
 .quizContent {
   padding: 0.2rem;
 }
@@ -214,7 +242,7 @@ nav .navItem {
 }
 
 .choiceContainer > p   {
-  margin-left: 0.6rem;
+  margin: 0rem 0.6rem;
 }
 
 .choiceNumber {
@@ -226,7 +254,19 @@ nav .navItem {
   width: 100%;
 }
 
-/* start button  */
-.startButtonText {
-  text-align: center;
+
+/* -------------------------------- */
+/* form  */
+
+.formLabel {
+  padding: 0.2rem;
+}
+
+.choiceContainer[type="text"] {
+  margin-bottom: 0.1rem;
+}
+.warning {
+  color: var(--ny-pink);
+  font-size: 1rem;
+  margin-top: -0rem;
 }
