@@ -175,7 +175,7 @@ function renderFirstQuestion (callback) {
       </div>
       <p class="choiceText">` + choice.text + `</p>`
     result.dataset.choice = choice.prefix;
-    result.classList.add("choiceContainer", "flexRow");
+    result.classList.add("choiceContainer", "flexRow", "clickable");
     result.addEventListener("click", callback);
     return result;
   };
@@ -328,7 +328,7 @@ function showFinalScore() {
       <label class="formLabel" for="userName">Please Enter Your Name</label>
       <input class="choiceContainer textCenter" type="text" id="userName" name="userName" placeholder="Asama Doop">
       <p class="warning hidden">A name must be non-empty.</p>
-      <input class="choiceContainer" id="submitButton" type="submit" value="Submit">
+      <input class="choiceContainer clickable" id="submitButton" type="submit" value="Submit">
     `
     let submitButton = form.querySelector("#submitButton");
     submitButton.addEventListener("click", callback);

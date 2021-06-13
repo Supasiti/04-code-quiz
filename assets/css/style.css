@@ -205,7 +205,6 @@ nav .navItem {
   margin: 0.2rem auto -0.2rem auto;
 }
 
-
 /* subtitle */
 .quizSubtitleContainer {
   padding: 0.8rem;
@@ -234,6 +233,10 @@ nav .navItem {
   align-items: center;
   margin: 0.6rem 0rem;
   transition: all 0.2s ease-in-out;
+}
+
+.clickable {
+  cursor: pointer;
 }
 
 .choiceContainer:hover {
@@ -295,4 +298,13 @@ nav .navItem {
 .tableRight {
   flex: 0 0 25%;
   padding: 1.2rem 2rem 0.8rem 2rem;
+}
+
+/* for autocomplete background colour */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px var(--light-grey) inset !important;
+  -webkit-text-fill-color: var(--light-green);
 }
