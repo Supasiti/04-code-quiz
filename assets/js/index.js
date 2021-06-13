@@ -339,11 +339,44 @@ function showFinalScore() {
 // activate when a submit button is clicked
 function onSubmitClicked (e) {
   e.preventDefault();
-  console.log("submit");
 
-  // check if input is empty 
-  // 
+  let userName = quizContentDiv.querySelector("#userName").value.trim();
+  if (userName === "") { // if user name field is empty
+    showWarning();
+    return;
+  };
+  let entry = {name: userName, score: timeLeft};
+  let highScores = getOrCreateHighScores();
+  
+  console.log(highScores);
+  highScores.push(entry);
+  console.log(highScores);
+  
+  setHighScores(highScores);
+  window.location.href = "./high-scores.html";
+
+  // show warning
+  function showWarning() {
+    let warningEl = quizContentDiv.querySelector(".warning");
+    if (warningEl.classList.contains("hidden")) {
+      warningEl.classList.remove("hidden");
+    };
+  };
 };
+
+// return an array of high scores from local storage or create an empty one
+function getOrCreateHighScores() {
+  let result = JSON.parse(localStorage.getItem("highScores"));
+  if (!result) {
+    result = [];
+  }
+  return result;
+};
+
+// set high scores
+function setHighScores(value) {
+  localStorage.setItem("highScores", JSON.stringify(value));
+}
 
 
 //----------------------------------------
