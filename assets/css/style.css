@@ -99,6 +99,16 @@ a {
   transition: all 0.5s ease-in-out;
 }
 
+.correctAnswer {
+  background-color: var(--teal);
+}
+
+.wrongAnswer {
+  background-color: var(--ny-pink);
+}
+
+
+
 /* -------------------------------- */
 /*  flex boxes */
 
