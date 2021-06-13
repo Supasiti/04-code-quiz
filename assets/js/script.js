@@ -4,64 +4,126 @@ let quizContentDiv = document.querySelector(".quizContent");
 let quizTitleContainer = document.querySelector(".quizTitleContainer");
 let startButton = document.querySelector("#startButton");
 
-console.log(startButton);
-
 //   need work out how to load data from somewhere  in the future
 let questions = [
   {
     question: "Which is the correct way to write a JavaScript array?",
-    choices: {
-      a: "var txt = new Array(1:\"tim\",2:\"kim\",3:\"jim\")",
-      b: "var txt = new Array:1=(\"tim\")2=(\"kim\")3=(\"jim\")",
-      c: "var txt = new Array(\"tim\",\"kim\",\"jim\")",
-      d: "var txt = new Array=\"tim\",\"kim\",\"jim\""
-    }, 
+    choices: [
+      {
+        prefix: "a",
+        text: "var txt = new Array(1:\"tim\",2:\"kim\",3:\"jim\")"
+      },
+      {
+        prefix: "b",
+        text: "var txt = new Array:1=(\"tim\")2=(\"kim\")3=(\"jim\")"
+      },
+      {
+        prefix: "c",
+        text: "var txt = new Array(\"tim\",\"kim\",\"jim\")"
+      },
+      {
+        prefix: "d",
+        text: "var txt = new Array=\"tim\",\"kim\",\"jim\""
+      },
+    ], 
     correctChoice: "c"
   },
   {
     question: "Inside which HTML element do we put the JavaScript?",
-    choices: {
-      a: "<js>",
-      b: "<scripting>",
-      c: "<script>",
-      d: "<javascript>"
-    }, 
+    choices: [
+      {
+        prefix: "a",
+        text: "<js>"
+      },
+      {
+        prefix: "b",
+        text: "<scripting>"
+      },
+      {
+        prefix: "c",
+        text: "<script>"
+      },
+      {
+        prefix: "d",
+        text: "<javascript>"
+      }
+    ], 
     correctChoice: "c"
   },
   {
     question: "If para1 is the DOM object for a paragraph, what is the correct syntax to change the text within the paragraph?",
-    choices: {
-      a: "\"New Text\"?",
-      b: "para1.value=\"New Text\";",
-      c: "para1.firstChild.nodeValue= \"New Text\";",
-      d: "para1.nodeValue=\"New Text\""
-    }, 
+    choices: [
+      {
+        prefix: "a",
+        text: "\"New Text\"?"
+      },
+      {
+        prefix: "b",
+        text: "para1.value=\"New Text\";"
+      },
+      {
+        prefix: "c",
+        text: "para1.firstChild.nodeValue= \"New Text\";"
+      },
+      {
+        prefix: "d",
+        text: "para1.nodeValue=\"New Text\""
+      }
+    ], 
     correctChoice: "b"
   },
   {
     question: "Using _______ statement is how you test for a specific condition.",
-    choices: {
-      a: "Select",
-      b: "If",
-      c: "Switch",
-      d: "For"
-    }, 
+    choices: [
+      {
+        prefix: "a",
+        text: "Select"
+      },
+      {
+        prefix: "b",
+        text: "If"
+      },
+      {
+        prefix: "c",
+        text: "Switch"
+      },
+      {
+        prefix: "d",
+        text: "For"
+      }
+    ], 
     correctChoice: "b"
   },
   {
     question: "Which of the following is the structure of an if statement?",
-    choices: {
-      a: "if (conditional expression is true) {then execute this code>->}",
-      b: "if (conditional expression is true) thenexecute this codeend if",
-      c: "if (conditional expression is true)execute this codeend if",
-      d: "if (conditional expression is true) then {execute this code}"
-    }, 
+    choices: [
+      {
+        prefix: "a",
+        text: "if (conditional expression is true) {then execute this code>->}"
+      },
+      {
+        prefix: "b",
+        text: "if (conditional expression is true) thenexecute this codeend if"
+      },
+      {
+        prefix: "c",
+        text: "if (conditional expression is true)execute this codeend if"
+      },
+      {
+        prefix: "d",
+        text: "if (conditional expression is true) then {execute this code}"
+      }
+    ], 
     correctChoice: "a"
   }
 ];
 let currentQuestion = 0;
 let quizTimerId;
 
+
+
+
+// clear inner html
 function clearInnerHtml(el) {
   el.innerHTML = "";
 };
@@ -71,7 +133,8 @@ function clearInnerHtml(el) {
 // Rendering questions 
 
 // render the question for the first time
-//  - subsequentially rendering can use renderQuestion instead
+//  - this will create all the html elements for the quiz.
+//  - subsequentially rendering choose use renderNextQuestion instead
 function renderFirstQuestion () {  
   quizSubtitle.textContent = questions[currentQuestion].question; 
   renderFirstQuizNumber();
@@ -93,27 +156,27 @@ function renderFirstChoiceSet() {
   clearInnerHtml(quizContentDiv);
   quizContentDiv.appendChild(ulContainer);
 
-  for (let choice in choices) {
-    let quizChoiceLi = createQuizChoiceLi(choice, choices[choice]);
+  for (let choice of choices) {
+    let quizChoiceLi = createQuizChoiceLi(choice);
     ulContainer.appendChild(quizChoiceLi);
   };
 };
 
 // create each <li> tag corresponding to the available choice.
-function createQuizChoiceLi(choice, text) {
+function createQuizChoiceLi(choice) {
   let result = document.createElement("li");
   result.innerHTML = `
     <div class="circleContainer flexColumn flexCenter"> 
-      <p class="choiceNumber">` + choice + `</p>
+      <p class="choiceNumber">` + choice.prefix + `</p>
     </div>
-    <p class="choiceText">` + text + `</p>`
-  result.dataset.choice = choice;
+    <p class="choiceText">` + choice.text + `</p>`
+  result.dataset.choice = choice.prefix;
   result.classList.add("choiceContainer", "flexRow");
-  result.addEventListener("click", getNextQuestion);
+  result.addEventListener("click", onQuestionAnswered);
   return result;
 };
 
-function getNextQuestion() {
+function onQuestionAnswered() {
   currentQuestion++;
   determineCorrect();
   if (currentQuestion == questions.length){
@@ -123,6 +186,12 @@ function getNextQuestion() {
   }
   renderNextQuestion(currentQuestion);
 }
+
+
+
+function determineCorrect(){
+
+};
 
 // render the next question
 function renderNextQuestion(index) {
@@ -136,15 +205,14 @@ function renderNextChoiceSet(index) {
   let choiceEls = quizContentDiv.querySelectorAll(".choiceText");
   for (let el of choiceEls) {
     let choice = el.parentElement.dataset.choice;
-    el.textContent =  questions[index].choices[choice];
-  }
+    let choiceText = questions[index].choices.filter((x) => {return x.prefix === choice})[0].text;
+    el.textContent = choiceText;
+  };  
 };
-
 
 
 
 startButton.addEventListener("click", function(e) {
   e.preventDefault();
-  console.log("button clicked");
   renderFirstQuestion();
 });
