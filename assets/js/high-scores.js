@@ -1,11 +1,18 @@
 let tableUl = document.querySelector(".table");
+let clearButton = document.querySelector("#clearButton");
 let highScores =[];
+
+
+// -------------------------------------
+//  Table
 
 function renderTable() {
   highScores = getOrCreateHighScores();
+  highScores.sort( (a,b) => {return b.score - a.score});
+  console.log(highScores);
   tableUl.innerHTML = "";
 
-  console.log(highScores);
+  // populate with each row of score
   for (let entry of highScores) {
     let tableRow = createTableRow();
     let tableName = tableRow.querySelector(".tableLeft");
@@ -27,7 +34,6 @@ function renderTable() {
   };
 };
 
-
 // return an array of high scores from local storage or create an empty one
 function getOrCreateHighScores() {
   let result = JSON.parse(localStorage.getItem("highScores"));
@@ -42,9 +48,19 @@ function setHighScores(value) {
   localStorage.setItem("highScores", JSON.stringify(value));
 }
 
+// -------------------------------------
+//  clear
+
+function clearTable(e) {
+  e.preventDefault();
+  setHighScores([])
+  renderTable();
+}
+
 
 function init(){
   renderTable();
+  clearButton.addEventListener("click", clearTable);
 };
 
 init();

@@ -288,11 +288,11 @@ nav .navItem {
 }
 
 .tableLeft {
-  flex: 0 0 70%;
-  padding: 1.2rem 2rem;
+  flex: 0 0 75%;
+  padding: 1.2rem 2rem 0.8rem 2rem;
 }
 
 .tableRight {
-  flex: 0 0 30%;
-  padding: 1.2rem 2rem;
+  flex: 0 0 25%;
+  padding: 1.2rem 2rem 0.8rem 2rem;
 }
