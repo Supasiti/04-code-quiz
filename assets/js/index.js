@@ -347,11 +347,7 @@ function onSubmitClicked (e) {
   };
   let entry = {name: userName, score: timeLeft};
   let highScores = getOrCreateHighScores();
-  
-  console.log(highScores);
   highScores.push(entry);
-  console.log(highScores);
-  
   setHighScores(highScores);
   window.location.href = "./high-scores.html";
 

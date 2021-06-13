@@ -150,6 +150,7 @@ a {
   justify-content: flex-end;
 }
 
+
 /* -------------------------------- */
 /* header */
 
@@ -269,4 +270,29 @@ nav .navItem {
   color: var(--ny-pink);
   font-size: 1rem;
   margin-top: -0rem;
+}
+
+
+/* -------------------------------- */
+/* scoreSheet  */
+
+.table {
+  margin: 1.2rem 0rem 0.8rem 0rem;
+  background-color: var(--dark-grey);
+  border: 1px solid var(--light-grey);
+  min-height: 20rem;
+}
+
+.tableRow:nth-child(even) {
+  background-color: var(--darker-grey);
+}
+
+.tableLeft {
+  flex: 0 0 70%;
+  padding: 1.2rem 2rem;
+}
+
+.tableRight {
+  flex: 0 0 30%;
+  padding: 1.2rem 2rem;
 }
