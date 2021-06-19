@@ -291,9 +291,6 @@ function showFinalScore() {
   renderTitle();
   renderScore();
   renderHighScoreForm(onSubmitClicked);
-  // update subtitle to your final score is 
-  // append child of score
-  // update content with a form 
 
   // render the title
   function renderTitle() {
