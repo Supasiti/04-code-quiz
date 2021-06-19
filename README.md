@@ -15,7 +15,7 @@ In this project, I was tasked to code quiz challenge that have the following mec
 
 The end product should resemble the mock-up provided below:
 
-![Code quiz demo](./assets/demo/screenshot.jpeg)
+![Code quiz demo](./assets/demo/screenshot.png)
 
 > **Note:** This layout will not look as good when the resolution drops below 300px.
 
@@ -42,6 +42,7 @@ To meet all the acceptance criteria above, the following design decisions were c
 - There will be 5 questions in total.
 - A time limit to answer all the questions is 75 seconds.
 - A penalty for answering incorrectly is 15 seconds, so that if a user incorrectly guesses all 5 questions, they would get a score of 0.
+- The questions will be stored as a variable in a JS file. 
 
 ### Visual elements
 - A user will be notified whether or not they answer the last question correctly by the colour of background: green for an correct answer, and red for an incorrect one.
