@@ -47,4 +47,5 @@ To meet all the acceptance criteria above, the following design decisions were c
 - A user will be notified whether or not they answer the last question correctly by the colour of background: green for an correct answer, and red for an incorrect one.
 
 ### Form
-- A user must submit a non-empty string
+- A user must submit a non-empty name.
+- A prompt will be displayed when an empty string is submitted.
